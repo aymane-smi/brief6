@@ -1,5 +1,5 @@
 <?php
-require_once "./inc/dash-header.php";
+require_once "inc/dash-header.php";
 ?>
 <main class="my-[20vh] w-full flex flex-col justify-center items-center">
     <form action="#" method="POST" class="rounded-sm border-[1.8px] border-gray-500 w-1/4 p-8 py-20 flex flex-col justify-center items-center">
@@ -19,5 +19,5 @@ require_once "./inc/dash-header.php";
     document.querySelector("body").style.backgroundColor = "#f4f4f4";
 </script>
 <?php
-require_once "./inc/dash-footer.php";
+require_once "inc/dash-footer.php";
 ?>

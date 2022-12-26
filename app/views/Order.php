@@ -1,9 +1,9 @@
 <?php
-    require_once "./inc/header.php";
+require_once "inc/header.php";
 ?>
 <div class="bg-white w-full mt-8 p-10 flex justify-center items-start gap-[50px]">
     <div>
-        <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="w-[200px] h-[200px] rounded-md"/>
+        <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="w-[200px] h-[200px] rounded-md" />
     </div>
     <div class="flex flex-col gap-4">
         <p class="font-800 text-[15px] text-gray-500 rounded-md p-1 bg-gray-200 text-center">Nom</p>
@@ -18,5 +18,5 @@
     </div>
 </div>
 <?php
-    require_once "./inc/footer.php";
+require_once "inc/footer.php";
 ?>

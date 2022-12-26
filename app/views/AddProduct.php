@@ -1,5 +1,5 @@
 <?php
-require_once "./inc/dash-header.php";
+require_once "inc/dash-header.php";
 ?>
 <div class="p-4 rounded-md bg-white">
     <p class="text-[24px] font-medium">
@@ -68,5 +68,5 @@ require_once "./inc/dash-header.php";
     </div>
 </div>
 <?php
-require_once "./inc/dash-footer.php";
+require_once "inc/dash-footer.php";
 ?>

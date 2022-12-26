@@ -1,5 +1,5 @@
 <?php
-require_once "./inc/dash-header.php";
+require_once "inc/dash-header.php";
 ?>
 <main class="w-full flex flex-col justify-start items-center my-[20vh]">
     <p class="text-[25px] mb-7">
@@ -25,5 +25,5 @@ require_once "./inc/dash-header.php";
     </form>
 </main>
 <?php
-require_once "./inc/dash-footer.php";
+require_once "inc/dash-footer.php";
 ?>

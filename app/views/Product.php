@@ -1,9 +1,9 @@
 <?php
-    require_once "./inc/header.php";
+require_once "inc/header.php";
 ?>
 <div class="bg-white w-full mt-8 p-10 flex justify-center items-start gap-[50px]">
     <div>
-        <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="w-[350px] h-[400px] rounded-md"/>
+        <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="w-[350px] h-[400px] rounded-md" />
         <div class="pb-3 border-b-[2px] border-gray-300 mt-3">
             <span class="border-b-[3px] border-gray-800 pb-3">détaille</span>
         </div>
@@ -22,5 +22,5 @@
     </div>
 </div>
 <?php
-    require_once "./inc/footer.php";
+require_once "inc/footer.php";
 ?>
