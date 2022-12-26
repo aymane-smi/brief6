@@ -1,5 +1,5 @@
 <?php
-    require_once "./inc/header.php";
+    require_once "inc/header.php";
 ?>
         <div class="mt-10 w-full rounded-[10px] flex flex-col justify-center items-center font-si">
             <span class="text-[25px] font-semibold">Bienvenu chez ElectroMaroc</span>
@@ -66,5 +66,5 @@
         </div>
         <a class="p-4 bg-black text-white rounded-tl-[15px] rounded-br-[15px] font-semibold mx-auto my-0 block w-fit">Voir tous les produits</a>
 <?php
-    require_once "./inc/footer.php";
+    require_once "inc/footer.php";
 ?>

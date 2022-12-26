@@ -1,5 +1,5 @@
 <?php
-require_once "./inc/header.php";
+require_once "inc/header.php";
 ?>
 <div class="p-8 mt-4 bg-white flex gap-20">
     <div class="w-fit">
@@ -29,5 +29,5 @@ require_once "./inc/header.php";
     </div>
 </div>
 <?php
-require_once "./inc/footer.php";
+require_once "inc/footer.php";
 ?>
