@@ -3,7 +3,7 @@ require_once "./inc/dash-header.php";
 ?>
 <div class="p-4 rounded-md bg-white">
     <p class="text-[24px] font-medium">
-        Ajouter un produit
+        Modifier produit
     </p>
     <div class="flex gap-5 mt-4">
         <div class="border-[1.5px] border-gray-200 rounded-sm p-3 grow">
@@ -62,7 +62,7 @@ require_once "./inc/dash-header.php";
             </div>
             <button class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px] mt-2" href="#">
                 <i class="fa-solid fa-arrow-down-to-arc"></i>
-                <span>ajouter le produit</span>
+                <span>Modifier le produit</span>
             </button>
         </div>
     </div>
