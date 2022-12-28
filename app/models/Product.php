@@ -30,4 +30,10 @@ class Product
         $this->db->bind(":n", $n);
         return $this->db->resultSet();
     }
+
+    public function getProducts()
+    {
+        $this->db->query("SELECT *,category.name FROM product JOIN category ON category.id = product.category_id");
+        return $this->db->resultSet();
+    }
 }
