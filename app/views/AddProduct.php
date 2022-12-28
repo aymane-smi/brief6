@@ -5,26 +5,29 @@ require_once "inc/dash-header.php";
     <p class="text-[24px] font-medium">
         Ajouter un produit
     </p>
-    <div class="flex gap-5 mt-4">
+    <form action="http://localhost:9000/Dashboard/addProduct" enctype="multipart/form-data" method="POST" class="flex gap-5 mt-4">
         <div class="border-[1.5px] border-gray-200 rounded-sm p-3 grow">
             <p class="text-[14px]">Ajouter une image</p>
-            <div class="bg-[#f4f6ff] border-dashed rounded-md mt-3 border-[3px] border-[#bee5ff] p-4 py-8 flex flex-col gap-5 justify-center items-center">
-                <i class="fa-thin fa-camera text-[60px]"></i>
-                <p>
-                    <i class="fa-light fa-up-to-line text-[#bee5ff]"></i>
-                    glisser votre fichier ici ou
-                    <span class="text-[#bee5ff]">cliquer</span>
-                </p>
-            </div>
-            <div class="p-3 border-gray-200 border-[1.5px] rounded-md mt-3 flex justify-between items-center">
+            <label name="image">
+                <div class="upload-container bg-[#f4f6ff] border-dashed rounded-md mt-3 border-[3px] border-[#bee5ff] p-4 py-8 flex flex-col gap-5 justify-center items-center">
+                    <i class="fa-thin fa-camera text-[60px]"></i>
+                    <p>
+                        <i class="fa-light fa-up-to-line text-[#bee5ff]"></i>
+                        glisser votre fichier ici ou
+                        <span class="text-[#bee5ff]">cliquer</span>
+                    </p>
+                </div>
+            </label>
+            <input type="file" name="image" hidden class="img-input" id="image" />
+            <div class="p-3 border-gray-200 border-[1.5px] rounded-md mt-3 flex justify-between items-center display-container hidden">
                 <div class="flex justify-center items-center gap-5">
-                    <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="rounded-sm w-[40px] h-[40px]" />
+                    <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="img-display rounded-sm w-[40px] h-[40px]" />
                     <div class="flex flex-col">
-                        <p>title</p>
-                        <p>size</p>
+                        <p class="img-name">title</p>
+                        <p class="img-size">size</p>
                     </div>
                 </div>
-                <i class="fa-regular fa-trash text-[22px] hover:text-red-500"></i>
+                <i class="fa-regular fa-trash text-[22px] hover:text-red-500 reset-image"></i>
             </div>
         </div>
         <div class="grow border-[1.5px] border-gray-200 rounded-sm p-3">
@@ -52,20 +55,23 @@ require_once "inc/dash-header.php";
                 <label for="final_price" class="text-[14px]">final offre</label>
                 <input type="number" name="final_price" class="p-2 w-full font-semibold mt-1 rounded-md border-gray-200 border-[1.5px]" id="final_price" />
             </div>
+
             <div class="w-full mb-2">
-                <select name="categorie w-full p-2 block rounded-md">
-                    <option selected>--------Catégorie--------</option>
-                    <option class="add-categorie">
-                        ajouter une nouvelle catégorie
-                    </option>
+                <select name="category" class="w-1/4 p-2 rounded-md border-gray-200 border-[1.5px] bg-white">
+                    <option selected value="not-accepted">--------Catégorie--------</option>
+                    <?php
+                    foreach ($data as $category)
+                        echo "<option value=" . $category->id . ">" . $category->name . "</option>"
+                    ?>
                 </select>
+                <a href="/Dashboard/addCategory" class="ml-3 text-[12px] font-thin text-[#19a2fb]">ajouter une catégorie?</a>
             </div>
             <button class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px] mt-2" href="#">
                 <i class="fa-solid fa-arrow-down-to-arc"></i>
                 <span>ajouter le produit</span>
             </button>
         </div>
-    </div>
+    </form>
 </div>
 <?php
 require_once "inc/dash-footer.php";

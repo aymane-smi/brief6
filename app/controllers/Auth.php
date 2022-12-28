@@ -50,7 +50,7 @@ class Auth extends Controller
         }
     }
 
-    public function signup($email = "", $username = "", $password = "", $fullName = "", $phone = "", $address = "", $city = "")
+    public function signup()
     {
         $data = [
             "email" => "",
@@ -64,27 +64,27 @@ class Auth extends Controller
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $redirect_key = false;
-            if (empty($email)) {
+            if (empty($_POST["email"])) {
                 $redirect_key = true;
                 $data["email"] = "adresse email néçaissaire";
-            } else if (empty($username)) {
+            } else if (empty($_POST["username"])) {
                 $redirect_key = true;
                 $data["username"] = "nom d'utilisateur néçaissaire";
-            } else if (empty($password)) {
+            } else if (empty($_POST["password"])) {
                 $redirect_key = true;
                 $data["password"] = "mot de passe néçaissaire";
-            } else if (empty($phone)) {
+            } else if (empty($_POST["phone"])) {
                 $redirect_key = true;
                 $data["phone"] = "numéro téléphone néçaissaire";
-            } else if (empty($address)) {
+            } else if (empty($_POST["address"])) {
                 $redirect_key = true;
                 $data["address"] = "address néçaissaire";
-            } else if (empty($fullName)) {
+            } else if (empty($_POST["fullName"])) {
                 $redirect_key = true;
                 $data["fullName"] = "nom complet néçaissaire";
-            } else if (empty($ville)) {
+            } else if (empty($_POST["city"])) {
                 $redirect_key = true;
-                $data["ville"] = "vile néçaissaire";
+                $data["city"] = "vile néçaissaire";
             }
 
             //checking key for redirection
@@ -92,7 +92,7 @@ class Auth extends Controller
             if ($redirect_key) {
                 $this->view("Signup", $data);
             } else {
-                $this->User->signup($email, $username, $password, $fullName, $phone, $address, $city);
+                $this->User->signup($_POST["email"], $_POST["username"], $_POST["password"], $_POST["fullName"], $_POST["phone"], $_POST["address"], $_POST["city"]);
                 header("Location: http://localtion:9000/Auth/Login");
             }
         } else {

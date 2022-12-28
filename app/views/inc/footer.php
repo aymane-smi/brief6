@@ -31,6 +31,8 @@
     </div>
     <p class="mx-auto my-0 text-white block w-fit">electroMaroc © 2022</p>
 </footer>
+<script src="http://localhost:9000/public/src/js/sidebar.js" type="text/javascript">
+</script>
 </body>
 
 </html>
