@@ -22,7 +22,7 @@ require_once "inc/header.php";
             <span class="counter">0</span>
             <span class="rounded-full border-[1px] p-1 border-gray-400 down-counter">-</span>
         </div>
-        <form action="http://localhost:9000/Produt/<?php echo $data->id; ?>" method="POST">
+        <form action="http://localhost:9000/Product/<?php echo $data->id; ?>" method="POST">
             <input type="hidden" name="qte" value="0" class="qte-input" />
             <button class="text-white bg-black p-5 mt-10 rounded-tl-[15px] rounded-br-[15px] font-semibold">ajouter au panier</button>
         </form>

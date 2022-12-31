@@ -3,6 +3,8 @@ require_once "inc/header.php";
 ?>
 <div class="bg-white w-full mt-8 p-10 flex justify-center items-start gap-[50px]">
     <?php
+    if (!count($data))
+        echo "votre cart est vide!";
     foreach ($data as $product) {
     ?>
         <div>
@@ -13,13 +15,13 @@ require_once "inc/header.php";
             <p class="font-bold text-[20px] text-black"><?php echo $product->final_price * $product->qte; ?> MAD</p>
             <div class="flex justify-between items-center gap-5">
                 Quantity:
-                <span class="rounded-full border-[1px] p-1 border-gray-400 up-counter">+</span>
+                <span class="rounded-full border-[1px] p-1 border-gray-400 up-counter" data-id="<?php echo $product->id; ?>">+</span>
                 <span class="counter">
                     <?php echo $product->qte; ?>
                 </span>
-                <span class="rounded-full border-[1px] p-1 border-gray-400 down-counter">-</span>
+                <span class="rounded-full border-[1px] p-1 border-gray-400 down-counter" data-id="<?php echo $product->id; ?>">-</span>
             </div>
-            <form action="http://localhost:9000/Produt/<?php echo $data->id; ?>" method="POST">
+            <form action="http://localhost:9000/Cart/Delete/<?php echo $product->id; ?>" method="POST">
                 <input type="hidden" name="qte" value="0" class="qte-input" />
                 <button class="text-red-600 underline">supprimer</button>
             </form>
@@ -29,5 +31,5 @@ require_once "inc/header.php";
     ?>
 </div>
 <?php
-require_once "inc/footer.php";
+require_once "inc/footer-cart.php";
 ?>

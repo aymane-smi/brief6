@@ -59,4 +59,19 @@ class ProductModel
         $this->db->bind(":id", $costumer_id);
         return $this->db->resultSet();
     }
+
+    public function deleteProductFRomCart($id)
+    {
+        $this->db->query("DELETE FROM cart WHERE product_id = :id");
+        $this->db->bind(":id", $id);
+        $this->db->execute();
+    }
+
+    public function setProductInCart($id, $value)
+    {
+        $this->db->query("UPDATE cart SET qte = :value WHERE product_id = :id");
+        $this->db->bind(":id", $id);
+        $this->db->bind(":value", $value);
+        $this->db->execute();
+    }
 }
