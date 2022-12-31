@@ -1,5 +1,5 @@
 <?php
-class Product
+class ProductModel
 {
     private $db;
 
@@ -31,9 +31,32 @@ class Product
         return $this->db->resultSet();
     }
 
+    public function getProductById($id)
+    {
+        $this->db->query("SELECT *, category.name FROM product JOIN category ON product.category_id = category.id WHERE product.id = :id");
+        $this->db->bind(":id", $id);
+        return $this->db->single();
+    }
+
     public function getProducts()
     {
         $this->db->query("SELECT *,category.name FROM product JOIN category ON category.id = product.category_id");
+        return $this->db->resultSet();
+    }
+
+    public function addProductToCart($product_id, $costumer_id, $qte)
+    {
+        $this->db->query("INSERT INTO cart(costumer_id, product_id, qte) VALUES(:costumer_id, :product_id, :qte)");
+        $this->db->bind(":costumer_id", $costumer_id);
+        $this->db->bind(":product_id", $product_id);
+        $this->db->bind(":qte", $qte);
+        $this->db->execute();
+    }
+
+    public function getProductFromCart($costumer_id)
+    {
+        $this->db->query("SELECT qte, product.* FROM cart JOIN product ON product.id = cart.product_id WHERE costumer_id = :id ");
+        $this->db->bind(":id", $costumer_id);
         return $this->db->resultSet();
     }
 }

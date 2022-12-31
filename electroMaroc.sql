@@ -59,3 +59,11 @@ CREATE TABLE commandItems(
     CONSTRAINT FK_commandItem_command FOREIGN KEY (command_id) REFERENCES command(id),
     CONSTRAINT FK_commandItem_product FOREIGN KEY (product_id) REFERENCES product(id)
 );
+
+CREATE TABLE cart(
+    costumer_id INT NOT NULL,
+    product_id INT NOT NULL,
+    qte INT DEFAULT 1,
+    CONSTRAINT FK_costumerCart FOREIGN KEY (costumer_id) REFERENCES costumer(id),
+    CONSTRAINT FK_productCart FOREIGN KEY (product_id) REFERENCES product(id)
+);

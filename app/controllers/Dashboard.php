@@ -2,12 +2,12 @@
 class Dashboard extends Controller
 {
     private $Category;
-    private $Product;
+    private $ProductModel;
 
     public function __construct()
     {
         $this->Category = $this->model("Category");
-        $this->Product = $this->model("Product");
+        $this->ProductModel = $this->model("ProductModel");
     }
     public function index()
     {
@@ -54,7 +54,7 @@ class Dashboard extends Controller
             if ($redirection_key) {
                 $this->view("AddCategory", $data);
             } else {
-                $this->Product->addProduct($_POST["reference"], $_POST["label"], $_POST["barcode"], $_FILES["image"]["name"], $_POST["purchase_price"], $_POST["offre_price"], $_POST["final_price"], $_POST["category"]);
+                $this->ProductModel->addProduct($_POST["reference"], $_POST["label"], $_POST["barcode"], $_FILES["image"]["name"], $_POST["purchase_price"], $_POST["offre_price"], $_POST["final_price"], $_POST["category"]);
                 move_uploaded_file($_FILES['image']['tmp_name'], "/var/www/html/public/assets/product" . $_FILES['image']['name']);
                 header("Location: http://localhost:9000/Dashboard");
             }
