@@ -38,7 +38,7 @@ require_once "inc/dash-header.php";
 <div class="mt-4 bg-white w-full rounded-md p-4">
     <div class="flex justify-between items-center w-full">
         <p class="text-[22px] font-medium">Produit</p>
-        <a class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px]" href="#">
+        <a class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px]" href="/Dashboard/addProduct">
             <i class="fa-light fa-circle-plus"></i>
             <span>ajouter un produit</span>
         </a>
@@ -58,19 +58,60 @@ require_once "inc/dash-header.php";
             </tr>
         </thead>
         <tbody>
-            <tr class="border-[1.5px] border-gray-200">
-                <td class="p-3 font-normal rounded-l-md">0</td>
-                <td class="p-3 font-normal">
-                    <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="product" class="rounded-full w-[40px] h-[40px]" />
-                </td>
-                <td class="p-3 font-normal">abcd</td>
-                <td class="p-3 font-normal">abcd</td>
-                <td class="p-3 font-normal">12345</td>
-                <td class="p-3 font-normal">PC</td>
-                <td class="p-3 font-normal">0 MAD</td>
-                <td class="p-3 font-normal">0 MAD</td>
-                <td class="p-3 font-normal rounded-tr-md rounded-br-md">0 MAD</td>
+            <?php
+            foreach ($data["product"] as $product) {
+            ?>
+                <tr class="border-[1.5px] border-gray-200">
+                    <td class="p-3 font-normal rounded-l-md"><?php echo $product->id; ?></td>
+                    <td class="p-3 font-normal">
+                        <img src="http://localhost:9000/public/src/assets/product/<?php echo $product->image; ?>" alt="<?php echo $product->reference; ?>" class="rounded-full w-[40px] h-[40px]" />
+                    </td>
+                    <td class="p-3 font-normal"><?php echo $product->reference; ?></td>
+                    <td class="p-3 font-normal"><?php echo $product->label; ?></td>
+                    <td class="p-3 font-normal"><?php echo $product->codeBar; ?></td>
+                    <td class="p-3 font-normal"><?php echo $product->name; ?></td>
+                    <td class="p-3 font-normal"><?php echo $product->purchase_price; ?> MAD</td>
+                    <td class="p-3 font-normal"><?php echo $product->final_price; ?> MAD</td>
+                    <td class="p-3 font-normal rounded-tr-md rounded-br-md"><?php echo $product->offre_price; ?> MAD</td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+<div class="mt-4 bg-white w-full rounded-md p-4">
+    <div class="flex justify-between items-center w-full">
+        <p class="text-[22px] font-medium">Catégorie</p>
+        <a class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px]" href="/Dashboard/addCategory">
+            <i class="fa-light fa-circle-plus"></i>
+            <span>ajouter une catégorie</span>
+        </a>
+    </div>
+    <table class="w-full mt-3">
+        <thead class="bg-[#0099fb] text-white">
+            <tr>
+                <th class="p-3 font-normal" align="left">Id</th>
+                <th class="p-3 font-normal" align="left">Image</th>
+                <th class="p-3 font-normal" align="left">Nom</th>
+                <th class="p-3 font-normal" align="left">Déscription</th>
             </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($data["category"] as $category) {
+            ?>
+                <tr class="border-[1.5px] border-gray-200">
+                    <td class="p-3 font-normal rounded-l-md"><?php echo $category->id; ?></td>
+                    <td class="p-3 font-normal">
+                        <img src="http://localhost:9000/public/src/assets/category/<?php echo $category->image; ?>" alt="<?php echo $category->name; ?>" class="rounded-full w-[40px] h-[40px]" />
+                    </td>
+                    <td class="p-3 font-normal"><?php echo $category->name; ?></td>
+                    <td class="p-3 font-normal"><?php echo $category->description; ?></td>
+                </tr>
+            <?php
+            }
+            ?>
         </tbody>
     </table>
 </div>

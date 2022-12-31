@@ -11,7 +11,11 @@ class Dashboard extends Controller
     }
     public function index()
     {
-        $this->view("Dashboard");
+        $data = [
+            "product" => $this->ProductModel->getProducts(),
+            "category" => $this->Category->getCategories()
+        ];
+        $this->view("Dashboard", $data);
     }
 
     public function addProduct()
