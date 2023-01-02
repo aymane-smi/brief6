@@ -5,9 +5,10 @@ class Home extends Controller
     private $Category;
     public function __construct()
     {
-        $this->Product = $this->model("Product");
+        $this->Product = $this->model("ProductModel");
         $this->Category = $this->model("Category");
     }
+
     public function index()
     {
         $data = [

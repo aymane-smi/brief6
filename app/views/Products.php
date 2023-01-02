@@ -18,7 +18,7 @@ require_once "inc/header.php";
             ?>
         </form>
     </div>
-    <div class="flex flex-wrap justify-start items-center mb-10 gap-20">
+    <div class="flex flex-wrap justify-start items-center mb-10 gap-20 products-container">
         <?php
         foreach ($data{
             "product"} as $product) {

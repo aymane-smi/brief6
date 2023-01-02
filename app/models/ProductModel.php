@@ -74,4 +74,18 @@ class ProductModel
         $this->db->bind(":value", $value);
         $this->db->execute();
     }
+
+    public function getProductsByCategories($categories)
+    {
+        if (count($categories) == 1) {
+            $this->db->query("SELECT *, category.name FROM product JOIN category ON category.id = product.category_id WHERE category_id = :id ");
+            $this->db->bind(":id", $categories[0]);
+            return $this->db->resultSet();
+        } else {
+            $categories = implode(",", $categories);
+            $this->db->query("SELECT *, category.name FROM product JOIN category ON category.id = product.category_id WHERE category_id IN (:categories)");
+            $this->db->bind(":categories", $categories);
+            return $this->db->resultSet();
+        }
+    }
 }
