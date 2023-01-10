@@ -55,6 +55,7 @@ require_once "inc/dash-header.php";
                 <th class="p-3 font-normal" align="left">Prix d'achat</th>
                 <th class="p-3 font-normal" align="left">Prix final</th>
                 <th class="p-3 font-normal" align="left">Prix offre</th>
+                <th class="p-3 font-normal" align="left">modifier</th>
             </tr>
         </thead>
         <tbody>
@@ -73,6 +74,9 @@ require_once "inc/dash-header.php";
                     <td class="p-3 font-normal"><?php echo $product->purchase_price; ?> MAD</td>
                     <td class="p-3 font-normal"><?php echo $product->final_price; ?> MAD</td>
                     <td class="p-3 font-normal rounded-tr-md rounded-br-md"><?php echo $product->offre_price; ?> MAD</td>
+                    <td class="p-3 font-normal">
+                        <a href="http://localhost:9000/Dashboard/Product/<?php echo $product->id; ?>">Modifier</a>
+                    </td>
                 </tr>
             <?php
             }
@@ -95,6 +99,7 @@ require_once "inc/dash-header.php";
                 <th class="p-3 font-normal" align="left">Image</th>
                 <th class="p-3 font-normal" align="left">Nom</th>
                 <th class="p-3 font-normal" align="left">Déscription</th>
+                <th class="p-3 font-normal" align="left">Modifier</th>
             </tr>
         </thead>
         <tbody>
@@ -108,6 +113,9 @@ require_once "inc/dash-header.php";
                     </td>
                     <td class="p-3 font-normal"><?php echo $category->name; ?></td>
                     <td class="p-3 font-normal"><?php echo $category->description; ?></td>
+                    <td class="p-3 font-normal">
+                        <a href="http://localhost:9000/Dashboard/Category/<?php echo $category->id; ?>">Modifier</a>
+                    </td>
                 </tr>
             <?php
             }
