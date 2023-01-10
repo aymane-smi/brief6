@@ -34,6 +34,8 @@
 <script src="http://localhost:9000/public/src/js/sidebar.js" type="text/javascript"></script>
 <script src="http://localhost:9000/public/src/js/productCount.js" type="text/javascript"></script>
 <script src="http://localhost:9000/public/src/js/CategoriesProduct.js" type="text/javascript"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="http://localhost:9000/public/src/js/stripe-payment.js" type="text/javascript"></script>
 </body>
 
 </html>

@@ -88,4 +88,11 @@ class ProductModel
             return $this->db->resultSet();
         }
     }
+
+    public function emptyCart($costumer_id)
+    {
+        $this->db->query("DELETE FROM cart WHERE costumer_id = :costumer_id");
+        $this->db->bind(":costumer_id", $costumer_id);
+        $this->db->execute();
+    }
 }

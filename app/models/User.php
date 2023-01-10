@@ -4,7 +4,7 @@ class User
 
     private $db;
 
-    public function construct()
+    public function __construct()
     {
         $this->db = new DB();
     }
@@ -75,5 +75,13 @@ class User
         $this->db->bind(":address", $address);
         $this->db->bind(":city", $city);
         return $this->db->execute();
+    }
+
+
+    public function getClientById($id)
+    {
+        $this->db->query("SELECT * FROM costumer WHERE id = :id");
+        $this->db->bind(":id", $id);
+        return $this->db->single();
     }
 }

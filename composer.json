@@ -1,0 +1,15 @@
+{
+    "name": "root/brief6",
+    "description": "e-commerce website",
+    "autoload": {
+        "psr-4": {
+            "Root\\Brief6\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aymane"
+        }
+    ],
+    "require": {}
+}
