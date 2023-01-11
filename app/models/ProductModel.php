@@ -23,25 +23,34 @@ class ProductModel
         return $this->db->execute();
     }
 
-    public function editProduct($id, $reference, $label, $barcode, $image = null, $purchase_price, $offre_price, $final_price, $category)
+    public function editProduct($id, $reference, $label, $barcode, $image = "", $purchase_price, $offre_price, $final_price, $category)
     {
-        $this->db->query("UPDATE product SET reference = :reference, label = :label, codeBar = :barcode, purchase_price = :purchase_price, offre_price = :offre_price, final_price = :final_price, category_id = :category WHERE id = :id");
-        $this->db->bind(":id", $id);
+        $this->db->query("UPDATE product SET 
+            reference = :reference, 
+            label = :label, 
+            codeBar = :barcode,
+            purchase_price = :purchase_price,
+            offre_price = :offre_price,
+            final_price = :final_price,
+            category_id = :category
+        WHERE id = :id");
         $this->db->bind(":reference", $reference);
         $this->db->bind(":label", $label);
         $this->db->bind(":barcode", $barcode);
-        $this->db->bind(":purchase_price", $purchase_price);
-        $this->db->bind(":offre_price", $offre_price);
-        $this->db->bind(":final_price", $final_price);
+        $this->db->bind(":id", $id);
+        $this->db->bind(":purchase_price", ($purchase_price));
+        $this->db->bind(":offre_price", ($offre_price));
+        $this->db->bind(":final_price", ($final_price));
         $this->db->bind(":category", $category);
         $this->db->execute();
-        if ($image !== null) {
+        if ($image !== "") {
             $this->db->query("UPDATE product image = :image WHERE id = :id");
             $this->db->bind(":id", $id);
             $this->db->bind(":image", $image);
             $this->db->execute();
         }
-        return $this->db->execute();
+        $this->db->execute();
+        //$this->db->debug();
     }
 
 

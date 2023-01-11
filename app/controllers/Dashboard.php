@@ -74,49 +74,13 @@ class Dashboard extends Controller
             ];
             $this->view("editProduct", $data);
         } else {
-            $redirection_key = false;
-            $data = [
-                "reference" => "",
-                "label" => "",
-                "barcode" => "",
-                "purchase_price" => "",
-                "offre_price" => "",
-                "final_price" => "",
-                "image" => "",
-            ];
-            if (empty($_POST["reference"])) {
-                $redirection_key = true;
-                $data["reference"] = "référence necessaire";
-            } else if (empty($_POST["label"])) {
-                $redirection_key = true;
-                $data["label"] = "libelle necessaire";
-            } else if (empty($_POST["barcode"])) {
-                $redirection_key = true;
-                $data["barcode"] = "codebar necessaire";
-            } else if (!isset($_FILES["image"])) {
-                $redirection_key = true;
-                $data["image"] = "image necessaire";
-            } else if (empty($_POST["purchase_price"])) {
-                $redirection_key = true;
-                $data["purchase_price"] = "prix d'achat necessaire";
-            } else if (empty($_POST["offre_price"])) {
-                $redirection_key = true;
-                $data["offre_price"] = "prix d'offre necessaire";
-            } else if (empty($_POST["final_price"])) {
-                $redirection_key = true;
-                $data["final_price"] = "prix d'finale necessaire";
-            }
-            if ($redirection_key) {
-                $this->view("AddCategory", $data);
+            if (isset($_FILES)) {
+                $this->ProductModel->editProduct($id, $_POST["reference"], $_POST["label"], $_POST["barcode"], $_FILES["image"]["name"], $_POST["purchase_price"], $_POST["offre_price"], $_POST["final_price"], $_POST["category"]);
+                move_uploaded_file($_FILES['image']['tmp_name'], "/var/www/html/public/src/assets/product/" . $_FILES['image']['name']);
             } else {
-                if (isset($_FILES)) {
-                    $this->ProductModel->editProduct($id, $_POST["reference"], $_POST["label"], $_POST["barcode"], $_FILES["image"]["name"], $_POST["purchase_price"], $_POST["offre_price"], $_POST["final_price"], $_POST["category"]);
-                    move_uploaded_file($_FILES['image']['tmp_name'], "/var/www/html/public/src/assets/product/" . $_FILES['image']['name']);
-                } else {
-                    $this->ProductModel->editProduct($id, $_POST["reference"], $_POST["label"], $_POST["barcode"], $_FILES["image"]["name"], $_POST["purchase_price"], $_POST["offre_price"], $_POST["final_price"], $_POST["category"]);
-                }
-                header("Location: http://localhost:9000/Dashboard");
+                $this->ProductModel->editProduct($id, $_POST["reference"], $_POST["label"], $_POST["barcode"], $_FILES["image"]["name"], $_POST["purchase_price"], $_POST["offre_price"], $_POST["final_price"], $_POST["category"]);
             }
+            header("Location: http://localhost:9000/Dashboard");
         }
     }
 
@@ -157,6 +121,18 @@ class Dashboard extends Controller
 
     public function Category($id = null)
     {
-        $this->view("EditCategory");
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+            $data = [
+                "category" => $this->Category->getCategoryById($id),
+            ];
+
+            $this->view("editCategory", $data);
+        } else {
+            if (isset($_FILES)) {
+                $this->Category->editCategoryById($id, $_POST["name"], "", $_POST["description"]);
+            } else
+                $this->Category->editCategoryById($id, $_POST["name"], $_FILES["image"]["name"], $_POST["description"]);
+            header("Location: /Dashboard");
+        }
     }
 }

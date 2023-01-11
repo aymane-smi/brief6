@@ -3,13 +3,13 @@ require_once "inc/dash-header.php";
 ?>
 <div class="p-4 rounded-md bg-white">
     <p class="text-[24px] font-medium">
-        Ajouter un produit
+        Modifier catégorie
     </p>
-    <form action="http://localhost:9000/Dashboard/addCategory" enctype="multipart/form-data" method="POST" class="flex gap-5 mt-4">
+    <form action="http://localhost:9000/Dashboard/Category/<?php echo $data["category"]->id; ?>" enctype="multipart/form-data" method="POST" class="flex gap-5 mt-4 max-[900px]:flex-col">
         <div class="border-[1.5px] border-gray-200 rounded-sm p-3 grow">
             <p class="text-[14px]">Ajouter une image</p>
             <label for="image">
-                <div class="upload-container bg-[#f4f6ff] border-dashed rounded-md mt-3 border-[3px] border-[#bee5ff] p-4 py-8 flex flex-col gap-5 justify-center items-center">
+                <div class="upload-container bg-[#f4f6ff] border-dashed rounded-md mt-3 border-[3px] border-[#bee5ff] p-4 py-8 flex gap-5 justify-center items-center">
                     <i class="fa-thin fa-camera text-[60px]"></i>
                     <p>
                         <i class="fa-light fa-up-to-line text-[#bee5ff]"></i>
@@ -33,15 +33,15 @@ require_once "inc/dash-header.php";
         <div class="grow border-[1.5px] border-gray-200 rounded-sm p-3">
             <div class="w-full mb-2">
                 <label for="name" class="text-[14px]">Nom</label>
-                <input type="text" name="name" class="p-2 w-full font-semibold mt-1 rounded-md border-gray-200 border-[1.5px]" id="name" />
+                <input value="<?php echo $data['category']->name; ?>" type="text" name="name" class="p-2 w-full font-semibold mt-1 rounded-md border-gray-200 border-[1.5px]" id="name" />
             </div>
             <div class="w-full mb-2">
                 <label for="description" class="text-[14px]">Déscription</label>
-                <textarea type="text" name="description" class="p-2 w-full font-semibold mt-1 rounded-md border-gray-200 border-[1.5px]" id="description"></textarea>
+                <textarea type="text" name="description" class="p-2 w-full font-semibold mt-1 rounded-md border-gray-200 border-[1.5px]" id="description"><?php echo $data['category']->description; ?></textarea>
             </div>
             <button class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px] mt-2" href="#">
                 <i class="fa-solid fa-arrow-down-to-arc"></i>
-                <span>ajouter la catégorie</span>
+                <span>modifier la catégorie</span>
             </button>
         </div>
     </form>

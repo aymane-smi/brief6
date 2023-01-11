@@ -73,6 +73,11 @@ class DB
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function debug()
+    {
+        $this->stmt->debugDumpParams();
+    }
+
     public function single()
     {
         $this->execute();

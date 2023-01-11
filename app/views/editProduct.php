@@ -1,12 +1,12 @@
 <?php
 require_once "inc/dash-header.php";
-echo $data["product"]->category_id;
+
 ?>
 <div class="p-4 rounded-md bg-white">
     <p class="text-[24px] font-medium">
-        Ajouter un produit
+        Modifier le produit
     </p>
-    <form action="http://localhost:9000/Dashboard/Product/<?php echo $data["product"]->id; ?>" enctype="multipart/form-data" method="POST" class="flex gap-5 mt-4">
+    <form action="http://localhost:9000/Dashboard/Product/<?php echo $data["product"]->id; ?>" enctype="multipart/form-data" method="POST" class="flex gap-5 mt-4 max-[900px]:flex-col">
         <div class="border-[1.5px] border-gray-200 rounded-sm p-3 grow">
             <p class="text-[14px]">Ajouter une image</p>
             <label name="image">
