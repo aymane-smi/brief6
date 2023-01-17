@@ -123,6 +123,13 @@ require_once "inc/dash-header.php";
         </tbody>
     </table>
 </div>
+<div class="flex gap-5 mt-5 max-[800px]:flex-col max-[800px]:justify-center max-[800px]:items-center">
+    <div id="chart" class="w-full"></div>
+    <div class="w-1/2 p-5 bg-white rounded-md h-fit flex flex-col gap-7 justify-center items-center max-[900px]:w-full">
+        <a href="/Dashboard/Orders" class="p-4 rounded-md bg-blue-500 text-white">gérer les commandes</a>
+        <a href="/Dashboard/settings" class="p-4 rounded-md bg-blue-500 text-white">modifier les paramètres</a>
+    </div>
+</div>
 <?php
 require_once "inc/dash-footer.php";
 ?>

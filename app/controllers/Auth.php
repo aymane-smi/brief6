@@ -22,7 +22,7 @@ class Auth extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = $this->User->adminLogin($_POST["email"], $_POST["password"]);
-            print_r($result);
+            //print_r($result);
             if ($result != false) {
                 session_start();
                 $_SESSION["ROLE"] = "admin";

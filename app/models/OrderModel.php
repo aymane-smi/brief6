@@ -54,4 +54,12 @@ class OrderModel
         $this->db->bind(":status", "delivred");
         return $this->db->resultSet();
     }
+
+    public function CountByMonth($month)
+    {
+        $this->db->query("SELECT * FROM command WHERE MONTH(creationDate) = :month");
+        $this->db->bind(":month", $month);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }

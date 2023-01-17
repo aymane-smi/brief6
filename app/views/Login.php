@@ -6,7 +6,7 @@ require_once "inc/dash-header.php";
         <span class="text-[#87ff54]">e</span>lectro<span class="font-[600]"><span class="text-[#87ff54]">M</span>aroc</span>
     </p>
     <p class="text-[22px] text-gray-500">Page d'authentification</p>
-    <form action="#" method="POST" class="w-full flex flex-col justify-start items-center">
+    <form action="http://localhost:9000/Auth/admin_auth" method="POST" class="w-full flex flex-col justify-start items-center">
         <div class="w-1/4 mt-4 drop-shadow-xl">
             <label for="email" class="text-gray-400 text-[20px]">
                 <i class="fa-regular fa-envelope"></i>

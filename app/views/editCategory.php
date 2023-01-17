@@ -19,7 +19,7 @@ require_once "inc/dash-header.php";
                 </div>
             </label>
             <input type="file" name="image" hidden class="img-input" id="image" />
-            <div class="p-3 border-gray-200 border-[1.5px] rounded-md mt-3 flex justify-between items-center display-container hidden">
+            <div class="p-3 border-gray-200 border-[1.5px] rounded-md mt-3 justify-between items-center display-container flex">
                 <div class="flex justify-center items-center gap-5">
                     <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="img-display rounded-sm w-[40px] h-[40px]" />
                     <div class="flex flex-col">
