@@ -84,4 +84,11 @@ class User
         $this->db->bind(":id", $id);
         return $this->db->single();
     }
+
+    public function getAdminById($id)
+    {
+        $this->db->query("SELECT * FROM admin WHERE id = :id");
+        $this->db->bind(":id", $id);
+        return $this->db->single();
+    }
 }

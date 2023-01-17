@@ -8,7 +8,7 @@ CREATE TABLE costumer(
     id INT PRIMARY KEY AUTO_INCREMENT,
     email varchar(50) NOT NULL UNIQUE,
     username varchar(30) NOT NULL,
-    password varchar(30) NOT NULL,
+    password varchar(150) NOT NULL,
     full_name varchar(50) NOT NULL,
     phone varchar(20) NOT NULL,
     address varchar(150) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE admin(
     id INT PRIMARY KEY AUTO_INCREMENT,
     email varchar(50) NOT NULL UNIQUE,
     username varchar(30) NOT NULL,
-    password varchar(30) NOT NULL
+    password varchar(150) NOT NULL
 );
 
 CREATE TABLE category(
@@ -49,6 +49,7 @@ CREATE TABLE command(
     creationDate Date,
     sentDate Date,
     deliveryDate Date,
+    status varchar(20) DEFAULT NULL,
     CONSTRAINT FK_cmd_cosid FOREIGN KEY (costumer_id) REFERENCES costumer(id)
 );
 

@@ -4,6 +4,7 @@ class Product extends Controller
     private $Product;
     public function __construct()
     {
+        session_start();
         $this->Product = $this->model("ProductModel");
     }
     public function index($id)

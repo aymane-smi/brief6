@@ -5,6 +5,7 @@ class Home extends Controller
     private $Category;
     public function __construct()
     {
+        session_start();
         $this->Product = $this->model("ProductModel");
         $this->Category = $this->model("Category");
     }

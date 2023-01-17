@@ -43,6 +43,8 @@ require_once "inc/dash-header.php";
                 <i class="fa-solid fa-arrow-down-to-arc"></i>
                 <span>modifier la catégorie</span>
             </button>
+            <a href="/Dashboard/deleteCategory/<?php echo $data["category"]->id; ?>" class="bg-red-500 p-2 text-white rounded-md font-thin text-[13px] mt-2">supprimer</a>
+
         </div>
     </form>
 </div>

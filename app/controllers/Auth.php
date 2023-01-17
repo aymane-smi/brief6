@@ -22,10 +22,12 @@ class Auth extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = $this->User->adminLogin($_POST["email"], $_POST["password"]);
+            print_r($result);
             if ($result != false) {
                 session_start();
                 $_SESSION["ROLE"] = "admin";
                 $_SESSION["user_id"] = $result->id;
+                header("Location: /Dashboard");
             }
         } else {
             session_start();
@@ -98,5 +100,12 @@ class Auth extends Controller
         } else {
             $this->view("Signup");
         }
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        header("Location: /Auth/adminLogin");
     }
 }

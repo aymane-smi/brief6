@@ -3,7 +3,7 @@ require_once "inc/dash-header.php";
 ?>
 <div class="w-full p-8 font-medium text-[25px]">
     <p>Dashboard</p>
-    <p class="text-gray-400 text-[16px] mt-2">Ravi de te revoir! username</p>
+    <p class="text-gray-400 text-[16px] mt-2">Ravi de te revoir! <?php echo $data["user"]->username; ?></p>
 </div>
 <div class="flex justify-center items-center w-full gap-4">
     <div class="bg-[#fe6976] w-fit p-5 rounded-md font-semibold text-white flex justify-between gap-5 items-center">

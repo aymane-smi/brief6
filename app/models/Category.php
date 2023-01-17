@@ -46,4 +46,11 @@ class Category
             $this->db->execute();
         }
     }
+
+    public function deleteCategoryById($id)
+    {
+        $this->db->query("DELETE FROM category where id = :id");
+        $this->db->bind(":id", $id);
+        $this->db->execute();
+    }
 }

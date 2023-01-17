@@ -5,6 +5,9 @@ class Cart extends Controller
 
     public function __construct()
     {
+        session_start();
+        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+            header("Location: /Auth/Login");
         $this->Product = $this->model("ProductModel");
     }
 

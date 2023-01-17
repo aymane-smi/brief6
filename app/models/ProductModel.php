@@ -125,4 +125,11 @@ class ProductModel
         $this->db->bind(":costumer_id", $costumer_id);
         $this->db->execute();
     }
+
+    public function deleteProductById($id)
+    {
+        $this->db->query("DELETE FROM product WHERE id = :id");
+        $this->db->bind(":id", $id);
+        $this->db->execute();
+    }
 }

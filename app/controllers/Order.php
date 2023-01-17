@@ -6,6 +6,9 @@ class Order extends Controller
     private $OrderModel;
     public function __construct()
     {
+        session_start();
+        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+            header("Location: /Auth/Login");
         $this->Product = $this->model("ProductModel");
         $this->Costumer = $this->model("User");
         $this->OrderModel = $this->model("OrderModel");
@@ -27,5 +30,10 @@ class Order extends Controller
             $this->OrderModel->createOrderItems($row->costumer_id, $row->product_id, $row->qte);
         }
         $this->Product->emptyCart();
+    }
+
+    public function changeStatus()
+    {
+        $this->OrderModel->changeOrderStatus($_POST["id"], $_POST["status"]);
     }
 }

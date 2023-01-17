@@ -3,17 +3,26 @@ class Dashboard extends Controller
 {
     private $Category;
     private $ProductModel;
+    private $Order;
+    private $User;
 
     public function __construct()
     {
+        session_start();
+        if (empty($_SESSION)) {
+            header("Location: /Auth/adminLogin");
+        }
         $this->Category = $this->model("Category");
         $this->ProductModel = $this->model("ProductModel");
+        $this->Order = $this->model("OrderModel");
+        $this->User = $this->model("User");
     }
     public function index()
     {
         $data = [
             "product" => $this->ProductModel->getProducts(),
-            "category" => $this->Category->getCategories()
+            "category" => $this->Category->getCategories(),
+            "user" => $this->User->getAdminById($_SESSION["user_id"]),
         ];
         $this->view("Dashboard", $data);
     }
@@ -134,5 +143,33 @@ class Dashboard extends Controller
                 $this->Category->editCategoryById($id, $_POST["name"], $_FILES["image"]["name"], $_POST["description"]);
             header("Location: /Dashboard");
         }
+    }
+
+
+    public function deleteProduct($id)
+    {
+        $row = $this->ProductModel->getProductById($id);
+        unlink("/var/www/html/public/src/assets/product/" . $row->image);
+        $this->ProductModel->deleteProductById($id);
+        header("Location: /Dashboard");
+    }
+
+    public function deleteCategory($id)
+    {
+        $row = $this->Category->getCategoryById($id);
+        unlink("/var/www/html/public/src/assets/category/" . $row->image);
+        $this->Category->deleteCategoryById($id);
+        header("Location: /Dashboard");
+    }
+
+    public function Orders()
+    {
+        $data = [
+            "created" => $this->Order->getCreatedOrder(),
+            "shipped" => $this->Order->getShippedOrder(),
+            "delivred" => $this->Order->getDelivredOrder(),
+        ];
+
+        $this->view("Orders", $data);
     }
 }

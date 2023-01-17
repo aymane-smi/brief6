@@ -4,6 +4,9 @@ class Account extends Controller
     private $User;
     public function __construct()
     {
+        session_start();
+        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+            header("Location: /Auth/Login");
         $this->User = $this->model("User");
     }
 
