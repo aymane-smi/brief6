@@ -4,7 +4,7 @@ require_once "inc/header.php";
 <div class="mt-10 w-full rounded-[10px] flex flex-col justify-center items-center font-si">
     <span class="text-[25px] font-semibold">Bienvenu chez ElectroMaroc</span>
     <span class="text-[20px] font-medium">le 1er distributer des composants éléctroniques dans la royaum</span>
-    <a class="text-white bg-black p-5 mt-10 rounded-tl-[15px] rounded-br-[15px] font-semibold">explore notre produits</a>
+    <a href="/Products" class="text-white bg-black p-5 mt-10 rounded-tl-[15px] rounded-br-[15px] font-semibold">explore notre produits</a>
 </div>
 </div>
 <div class="bg-black w-screen p-8">
@@ -48,7 +48,7 @@ require_once "inc/header.php";
         }
         ?>
     </div>
-    <a class="p-4 bg-black text-white rounded-tl-[15px] rounded-br-[15px] font-semibold mx-auto my-0 block w-fit">Voir tous les produits</a>
+    <a href="/Products" class="p-4 bg-black text-white rounded-tl-[15px] rounded-br-[15px] font-semibold mx-auto my-0 block w-fit">Voir tous les produits</a>
     <?php
     require_once "inc/footer.php";
     ?>

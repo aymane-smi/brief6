@@ -6,9 +6,9 @@ class Products extends Controller
 
     public function __construct()
     {
-        session_start();
-        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
-            header("Location: /Auth/Login");
+        // session_start();
+        // if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+        //     header("Location: /Auth/Login");
         $this->ProductModel = $this->model("ProductModel");
         $this->Category = $this->model("Category");
     }

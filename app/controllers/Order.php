@@ -8,7 +8,7 @@ class Order extends Controller
     {
         session_start();
         if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
-            header("Location: /Auth/Login");
+            header("Location: /");
         $this->Product = $this->model("ProductModel");
         $this->Costumer = $this->model("User");
         $this->OrderModel = $this->model("OrderModel");
