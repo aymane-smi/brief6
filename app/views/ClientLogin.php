@@ -2,7 +2,7 @@
 require_once "inc/dash-header.php";
 ?>
 <main class="my-[20vh] w-full flex flex-col justify-center items-center">
-    <form action="http://localhost:9000/Auth/admin_auth" method="POST" class="rounded-sm border-[1.8px] border-gray-500 w-1/4 p-8 py-20 flex flex-col justify-center items-center">
+    <form action="http://localhost:9000/Auth/client_auth" method="POST" class="rounded-sm border-[1.8px] border-gray-500 w-1/4 p-8 py-20 flex flex-col justify-center items-center">
         <p class="text-[20px] fotn-semibold"> Accéder a votre compte!</p>
         <div class="mt-3 text-gray-400 w-full">
             <label for="email">Email</label>

@@ -19,8 +19,12 @@ session_start();
                 <?php
                 if (isset($_SESSION["ROLE"])) {
                 ?>
-                    <i class="fa-light fa-user text-[20px]"></i>
-                    <i class="fa-light fa-cart-shopping text-[20px]"></i>
+                    <a href="/settings">
+                        <i class="fa-light fa-user text-[20px]"></i>
+                    </a>
+                    <a href="/cart">
+                        <i class="fa-light fa-cart-shopping text-[20px]"></i>
+                    </a>
                 <?php
                 }
                 ?>
@@ -41,10 +45,23 @@ session_start();
                         </a>
                     </li>
                     <li class="mt-5">
-                        <a href="/Auth/Login">
-                            <i class="fa-regular fa-user"></i>
-                            <span class="ml-2">Compte</span>
-                        </a>
+                        <?php
+                        if (isset($_SESSION["ROLE"])) {
+                        ?>
+                            <a href="/Auth/logout">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span class="ml-2">Logout</span>
+                            </a>
+                        <?php
+                            }else{
+                        ?>
+                            <a href="/Auth/Login">
+                                <i class="fa-regular fa-user"></i>
+                                <span class="ml-2">Compte</span>
+                            </a>
+                        <?php
+                            }
+                        ?>
                     </li>
                 </ul>
                 <i class="fa-sharp fa-solid fa-xmark float-right mr-3 text-[25px] text-white close-icon"></i>

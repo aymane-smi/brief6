@@ -66,7 +66,7 @@ class User
         ];
 
         $password = password_hash($password, PASSWORD_BCRYPT, $option);
-        $this->db->query("INSERT INTO costumer VALUE(email, username, password, full_name, phone, address, city) VALUES(:email, :username, :password, :full_name, :phone, :address, :city)");
+        $this->db->query("INSERT INTO costumer(email, username, password, full_name, phone, address, city) VALUES(:email, :username, :password, :full_name, :phone, :address, :city)");
         $this->db->bind(":email", $email);
         $this->db->bind(":username", $username);
         $this->db->bind(":password", $password);

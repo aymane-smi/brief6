@@ -1,5 +1,6 @@
 <?php
 require_once "inc/dash-header.php";
+var_dump($data);
 ?>
 <main class="w-full flex flex-col justify-start items-center my-[20vh]">
     <p class="text-[25px] mb-7">
@@ -12,6 +13,12 @@ require_once "inc/dash-header.php";
                 Email
             </label>
             <input type="email" name="email" class="w-full mt-1 text-[18px] p-2 border-[1.5px] text-gray-400 rounded-md" id="email" />
+        </div>
+        <div class="w-1/4 mt-4 drop-shadow-xl">
+            <label for="username" class="text-gray-400 text-[20px]">
+                Username
+            </label>
+            <input type="text" name="username" class="w-full mt-1 text-[18px] p-2 border-[1.5px] text-gray-400 rounded-md" id="username" />
         </div>
         <div class="w-1/4 mt-6 drop-shadow-xl">
             <label for="password" class="text-gray-400 text-[20px]">

@@ -44,6 +44,7 @@ class Auth extends Controller
                 session_start();
                 $_SESSION["ROLE"] = "client";
                 $_SESSION["user_id"] = $result->id;
+                header("Location: /");
             }
         } else {
             session_start();
@@ -81,9 +82,9 @@ class Auth extends Controller
             } else if (empty($_POST["address"])) {
                 $redirect_key = true;
                 $data["address"] = "address néçaissaire";
-            } else if (empty($_POST["fullName"])) {
+            } else if (empty($_POST["full_name"])) {
                 $redirect_key = true;
-                $data["fullName"] = "nom complet néçaissaire";
+                $data["full_name"] = "nom complet néçaissaire";
             } else if (empty($_POST["city"])) {
                 $redirect_key = true;
                 $data["city"] = "vile néçaissaire";
@@ -94,7 +95,7 @@ class Auth extends Controller
             if ($redirect_key) {
                 $this->view("Signup", $data);
             } else {
-                $this->User->signup($_POST["email"], $_POST["username"], $_POST["password"], $_POST["fullName"], $_POST["phone"], $_POST["address"], $_POST["city"]);
+                $this->User->signup($_POST["email"], $_POST["username"], $_POST["password"], $_POST["full_name"], $_POST["phone"], $_POST["address"], $_POST["city"]);
                 header("Location: http://localtion:9000/Auth/Login");
             }
         } else {
@@ -106,6 +107,6 @@ class Auth extends Controller
     {
         session_start();
         session_destroy();
-        header("Location: /Auth/adminLogin");
+        header("Location: /");
     }
 }
