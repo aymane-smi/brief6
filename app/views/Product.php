@@ -1,5 +1,9 @@
 <?php
 require_once "inc/header.php";
+$key = false;
+session_start();
+if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+    $key = true;
 ?>
 <div class="bg-white w-full mt-8 p-10 flex justify-center items-start gap-[50px]">
     <div>
@@ -22,9 +26,10 @@ require_once "inc/header.php";
             <span class="counter">0</span>
             <span class="rounded-full border-[1px] p-1 border-gray-400 down-counter">-</span>
         </div>
+        <?php if ($key) echo "true"; ?>
         <form action="http://localhost:9000/Product/<?php echo $data->id; ?>" method="POST">
             <input type="hidden" name="qte" value="0" class="qte-input" />
-            <button class="text-white bg-black p-5 mt-10 rounded-tl-[15px] rounded-br-[15px] font-semibold">ajouter au panier</button>
+            <button class="text-white bg-black p-5 mt-10 rounded-tl-[15px] rounded-br-[15px] font-semibold" <?php if ($key) echo "disabled"; ?>>ajouter au panier</button>
         </form>
     </div>
 </div>

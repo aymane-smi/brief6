@@ -56,21 +56,21 @@ class ProductModel
 
     public function getProductByLimit($n)
     {
-        $this->db->query("SELECT *, category.name FROM product JOIN category ON category.id = product.category_id LIMIT :n");
+        $this->db->query("SELECT product.*, category.name FROM product JOIN category ON category.id = product.category_id LIMIT :n");
         $this->db->bind(":n", $n);
         return $this->db->resultSet();
     }
 
     public function getProductById($id)
     {
-        $this->db->query("SELECT *, category.name FROM product JOIN category ON product.category_id = category.id WHERE product.id = :id");
+        $this->db->query("SELECT product.*, category.name FROM product JOIN category ON product.category_id = category.id WHERE product.id = :id");
         $this->db->bind(":id", $id);
         return $this->db->single();
     }
 
     public function getProducts()
     {
-        $this->db->query("SELECT *,category.name FROM product JOIN category ON category.id = product.category_id");
+        $this->db->query("SELECT product.*,category.name FROM product JOIN category ON category.id = product.category_id");
         return $this->db->resultSet();
     }
 
@@ -108,13 +108,14 @@ class ProductModel
     public function getProductsByCategories($categories)
     {
         if (count($categories) == 1) {
-            $this->db->query("SELECT *, category.name FROM product JOIN category ON category.id = product.category_id WHERE category_id = :id ");
+            $this->db->query("SELECT product.*, category.name FROM product JOIN category ON category.id = product.category_id WHERE category_id = :id ");
             $this->db->bind(":id", $categories[0]);
             return $this->db->resultSet();
         } else {
             $categories = implode(",", $categories);
-            $this->db->query("SELECT *, category.name FROM product JOIN category ON category.id = product.category_id WHERE category_id IN (:categories)");
-            $this->db->bind(":categories", $categories);
+            //echo json_encode(["categories" => $categories]);
+            $this->db->query("SELECT product.*, category.name FROM product JOIN category ON category.id = product.category_id WHERE category_id IN ($categories)");
+            //$this->db->bind(":categories", $categories);
             return $this->db->resultSet();
         }
     }

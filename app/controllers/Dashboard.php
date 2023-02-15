@@ -9,7 +9,7 @@ class Dashboard extends Controller
     public function __construct()
     {
         session_start();
-        if (empty($_SESSION)) {
+        if (empty($_SESSION) || $_SESSION["ROLE"] === "client") {
             header("Location: /Auth/adminLogin");
         }
         $this->Category = $this->model("Category");

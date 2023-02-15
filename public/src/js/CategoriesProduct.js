@@ -1,12 +1,16 @@
 const categories = document.querySelectorAll("input[type='checkbox']:checked");
 const ProductsContainer = document.querySelector(".products-container");
-const arr = [];
+let arr = [];
+
+console.log("ok");
 
 for(checkbox of document.querySelectorAll("input[type='checkbox']")){
     checkbox.addEventListener("change", ()=>{
-        const arr = [];
+        // const arr = [];
+        arr=[];
         document.querySelectorAll("input[type='checkbox']:checked").forEach((check)=>{
-            arr.push(check.value);
+            arr.push(parseInt(check.value));
+            console.log(arr);
         });
         if(arr.length){
             let formData = new FormData();
