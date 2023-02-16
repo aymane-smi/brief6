@@ -23,16 +23,16 @@ class Auth extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = $this->User->adminLogin($_POST["email"], $_POST["password"]);
             //print_r($result);
-            if ($result != false) {
+            if ($result) {
                 session_start();
                 $_SESSION["ROLE"] = "admin";
                 $_SESSION["user_id"] = $result->id;
                 header("Location: /Dashboard");
+            } else {
+                session_start();
+                $_SESSION["err_msg"] = "mot de passe/email invalide!";
+                header("Location: /Auth/adminLogin");
             }
-        } else {
-            session_start();
-            $_SESSION["err_msg"] = "mot de passe/email invalide!";
-            header("Location: /Auth/adminLogin");
         }
     }
 
@@ -45,11 +45,11 @@ class Auth extends Controller
                 $_SESSION["ROLE"] = "client";
                 $_SESSION["user_id"] = $result->id;
                 header("Location: /");
+            } else {
+                session_start();
+                $_SESSION["err_msg"] = "mot de passe/email invalide!";
+                header("Location: /Auth/Login");
             }
-        } else {
-            session_start();
-            $_SESSION["err_msg"] = "mot de passe/email invalide!";
-            header("Location: /Auth/Login");
         }
     }
 

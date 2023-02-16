@@ -10,28 +10,28 @@ require_once "inc/dash-header.php";
         <i class="fa-regular fa-chart-line-up text-[25px]"></i>
         <div class="flex flex-col">
             <span class="font-normal">nbr de commandes</span>
-            <span>0</span>
+            <span><?php echo $data["order"]; ?></span>
         </div>
     </div>
     <div class="bg-[#19a2fb] w-fit p-5 rounded-md font-semibold text-white flex justify-between gap-5 items-center">
         <i class="fa-solid fa-person text-[25px]"></i>
         <div class="flex flex-col">
             <span class="font-normal">nbr de clients</span>
-            <span>0</span>
+            <span><?php echo $data["clients"] ?></span>
         </div>
     </div>
     <div class="bg-[#74cdff] w-fit p-5 rounded-md font-semibold text-white flex justify-between gap-5 items-center">
         <i class="fa-solid fa-paper-plane-top text-[25px]"></i>
         <div class="flex flex-col">
             <span class="font-normal">nbr de commandes envoyées</span>
-            <span>0</span>
+            <span><?php echo $data["shipped"]; ?></span>
         </div>
     </div>
     <div class="bg-[#83b3c0] w-fit p-5 rounded-md font-semibold text-white flex justify-between gap-5 items-center">
         <i class="fa-sharp fa-solid fa-badge-check text-[25px]"></i>
         <div class="flex flex-col">
-            <span class="font-normal">nbr de commandes envoyées</span>
-            <span>0</span>
+            <span class="font-normal">nbr de commandes reçu</span>
+            <span><?php echo $data["delivred"]; ?></span>
         </div>
     </div>
 </div>

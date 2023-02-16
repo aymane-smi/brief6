@@ -29,28 +29,28 @@ class OrderModel
     public function changeOrderStatus($id, $status)
     {
         $this->db->query("UPDATE command SET status = :status WHERE id = :id");
-        $this->db->bind(":id", $id);
+        $this->db->bind(":id", intval($id));
         $this->db->bind(":status", $status);
         $this->db->execute();
     }
 
     public function getCreatedOrder()
     {
-        $this->db->query("SELECT *, costumer.address, costumer.full_name FROM command JOIN costumer ON costumer.id = command.costumer_id WHERE status = :status");
+        $this->db->query("SELECT command.*, costumer.address, costumer.full_name FROM command JOIN costumer ON costumer.id = command.costumer_id WHERE status = :status");
         $this->db->bind(":status", "created");
         return $this->db->resultSet();
     }
 
     public function getShippedOrder()
     {
-        $this->db->query("SELECT *, costumer.address, costumer.full_name FROM command JOIN costumer ON costumer.id = command.costumer_id WHERE status = :status");
+        $this->db->query("SELECT command.*, costumer.address, costumer.full_name FROM command JOIN costumer ON costumer.id = command.costumer_id WHERE status = :status");
         $this->db->bind(":status", "shipped");
         return $this->db->resultSet();
     }
 
     public function getDelivredOrder()
     {
-        $this->db->query("SELECT *, costumer.address, costumer.full_name FROM command JOIN costumer ON costumer.id = command.costumer_id WHERE status = :status");
+        $this->db->query("SELECT command.*, costumer.address, costumer.full_name FROM command JOIN costumer ON costumer.id = command.costumer_id WHERE status = :status");
         $this->db->bind(":status", "delivred");
         return $this->db->resultSet();
     }
@@ -61,5 +61,23 @@ class OrderModel
         $this->db->bind(":month", $month);
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function nbrShipped()
+    {
+        $this->db->query("SELECT count(*) as nbr FROM command WHERE status = 'shipped' ");
+        return $this->db->single();
+    }
+
+    public function nbrDelivred()
+    {
+        $this->db->query("SELECT count(*) as nbr FROM command WHERE status = 'delivred' ");
+        return $this->db->single();
+    }
+
+    public function nbrOrder()
+    {
+        $this->db->query("SELECT count(*) as nbr FROM command");
+        return $this->db->single();
     }
 }

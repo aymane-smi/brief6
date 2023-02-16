@@ -30,7 +30,7 @@ session_start();
                 ?>
                 <i class="fa-light fa-bars text-[20px] open-nav"></i>
             </div>
-            <div class="bg-white fixed right-0 top-0 w-screen h-screen z-10 bg-black/60 navbar-class hidden">
+            <div class="fixed right-0 top-0 w-screen h-screen z-10 bg-black/60 navbar-class hidden">
                 <ul class="float-right bg-white h-screen w-[40vh] flex pt-10 flex-col justify-start items-center text-[25px] font-bold">
                     <li class="mt-5">
                         <a href="/">
@@ -53,14 +53,14 @@ session_start();
                                 <span class="ml-2">Logout</span>
                             </a>
                         <?php
-                            }else{
+                        } else {
                         ?>
                             <a href="/Auth/Login">
                                 <i class="fa-regular fa-user"></i>
                                 <span class="ml-2">Compte</span>
                             </a>
                         <?php
-                            }
+                        }
                         ?>
                     </li>
                 </ul>

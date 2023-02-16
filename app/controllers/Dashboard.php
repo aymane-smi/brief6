@@ -22,6 +22,10 @@ class Dashboard extends Controller
         $data = [
             "product" => $this->ProductModel->getProducts(),
             "category" => $this->Category->getCategories(),
+            "clients" => $this->User->nbrClients()->nbr,
+            "order" => $this->Order->nbrOrder()->nbr,
+            "shipped" => $this->Order->nbrShipped()->nbr,
+            "delivred" => $this->Order->nbrDelivred()->nbr,
             "user" => $this->User->getAdminById($_SESSION["user_id"]),
         ];
         $this->view("Dashboard", $data);
@@ -171,5 +175,21 @@ class Dashboard extends Controller
         ];
 
         $this->view("Orders", $data);
+    }
+
+    public function settings()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            if (!empty($_POST["password"]))
+                $this->User->updateAdminWithPwd($_POST["email"], $_POST["username"], $_POST["password"], $_SESSION["user_id"]);
+            else
+                $this->User->updateAdminWithoutPwd($_POST["email"], $_POST["username"], $_SESSION["user_id"]);
+            header("Location: /Dashboard");
+        } else {
+            $data = [
+                "admin" => $this->User->getAdminById($_SESSION["user_id"]),
+            ];
+            $this->view("admSettings", $data);
+        }
     }
 }

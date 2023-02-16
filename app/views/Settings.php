@@ -3,7 +3,7 @@ require_once "inc/header.php";
 ?>
 <div class="w-full flex justify-center items-center">
     <div class="bg-white p-4 mt-4 w-1/2 rounded-md">
-        <form class="w-full " method="POST" action="#">
+        <form class="w-full " method="POST" action="http://localhost:9000/Settings/edit">
             <div class="flex flex-col items-start mt-2">
                 <label for="email">email:</label>
                 <input type="email" name="email" id="email" class="w-[90%] rounded-md border p-3" value="<?php echo $data["client"]->email; ?>" />

@@ -7,7 +7,7 @@ class Order extends Controller
     public function __construct()
     {
         session_start();
-        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+        if (empty($_SESSION))
             header("Location: /");
         $this->Product = $this->model("ProductModel");
         $this->Costumer = $this->model("User");
@@ -34,6 +34,11 @@ class Order extends Controller
 
     public function changeStatus()
     {
-        $this->OrderModel->changeOrderStatus($_POST["id"], $_POST["status"]);
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            echo json_encode(["id" => $_POST["id"], "status" => $_POST["status"]]);
+            $this->OrderModel->changeOrderStatus($_POST["id"], $_POST["status"]);
+        } else {
+            echo "status change";
+        }
     }
 }

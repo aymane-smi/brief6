@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "inc/dash-header.php";
 ?>
 <main class="w-full flex flex-col justify-start items-center my-[20vh]">
@@ -21,6 +22,8 @@ require_once "inc/dash-header.php";
             </label>
             <input type="password" name="password" class="w-full mt-1 text-[18px] p-2 border-[1.5px] text-gray-400 rounded-md" id="password" />
         </div>
+        <p class="text-red-500"><?php echo  $_SESSION["err_msg"];
+                                $_SESSION["err_msg"] = ""; ?></p>
         <button class="drop-shadow-xl mt-3 p-4 bg-[#0099fb] text-white rounded-md">Connecter</button>
     </form>
 </main>
