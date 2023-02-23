@@ -3,17 +3,13 @@ require_once "inc/dash-header.php";
 ?>
 <div class="w-screen h-screen absolute bg-black/20 justify-center items-center hidden" id="model">
     <div class="bg-white p-10 rounded-[10px]">
-        <p class="font-bold">client:</p>
+        <div class="client-info"></div>
         <div class="grid grid-cols-3 gap-3 mt-5">
             <p class="rounded-[10px] bg-blue-500 p-3 flex justify-center text-white font-bold">Product</p>
             <p class="rounded-[10px] bg-blue-500 p-3 flex justify-center text-white font-bold">qte</p>
             <p class="rounded-[10px] bg-blue-500 p-3 flex justify-center text-white font-bold">price</p>
         </div>
-        <div class="grid grid-cols-3 gap-3 mt-5 module-details">
-            <p class="rounded-[10px] p-3 flex justify-center font-bold">Mac</p>
-            <p class="rounded-[10px] p-3 flex justify-center font-bold">1</p>
-            <p class="rounded-[10px] p-3 flex justify-center font-bold">1200$</p>
-        </div>
+        <div class="products"></div>
         <div class="p-2 rounded-[10px] text-white bg-red-600 w-fit mt-3 close-model cursor-pointer">close</div>
     </div>
 </div>
