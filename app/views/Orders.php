@@ -1,6 +1,22 @@
 <?php
 require_once "inc/dash-header.php";
 ?>
+<div class="w-screen h-screen absolute bg-black/20 justify-center items-center hidden" id="model">
+    <div class="bg-white p-10 rounded-[10px]">
+        <p class="font-bold">client:</p>
+        <div class="grid grid-cols-3 gap-3 mt-5">
+            <p class="rounded-[10px] bg-blue-500 p-3 flex justify-center text-white font-bold">Product</p>
+            <p class="rounded-[10px] bg-blue-500 p-3 flex justify-center text-white font-bold">qte</p>
+            <p class="rounded-[10px] bg-blue-500 p-3 flex justify-center text-white font-bold">price</p>
+        </div>
+        <div class="grid grid-cols-3 gap-3 mt-5 module-details">
+            <p class="rounded-[10px] p-3 flex justify-center font-bold">Mac</p>
+            <p class="rounded-[10px] p-3 flex justify-center font-bold">1</p>
+            <p class="rounded-[10px] p-3 flex justify-center font-bold">1200$</p>
+        </div>
+        <div class="p-2 rounded-[10px] text-white bg-red-600 w-fit mt-3 close-model cursor-pointer">close</div>
+    </div>
+</div>
 <p class="text-[28px] font-semibold">Liste des commandes</p>
 <div class="mt-5 p-8 bg-white rounded-md">
     <div class="grid gap-5 grid-cols-3">
@@ -17,7 +33,10 @@ require_once "inc/dash-header.php";
                             <i class="fa-regular fa-location-dot"></i>
                             <?php echo $created->address; ?>
                         </p>
-                        <p class="p-1 text-[13px] rounded-md border-blue-500 border w-fit status">créer</p>
+                        <div class="flex gap-3">
+                            <p class="p-1 text-[13px] rounded-md border-blue-500 border w-fit status">créer</p>
+                            <p class="p-1 text-[13px] rounded-md border-gray-500 border w-fit activate_model" id="info-<?php echo $created->id; ?>">more</p>
+                        </div>
                     </div>
                 </div>
             <?php
@@ -37,7 +56,10 @@ require_once "inc/dash-header.php";
                             <i class="fa-regular fa-location-dot"></i>
                             <?php echo $shipped->address; ?>
                         </p>
-                        <p class="p-1 text-[13px] rounded-md border-blue-500 border w-fit status">créer</p>
+                        <div class="flex gap-3">
+                            <p class="p-1 text-[13px] rounded-md border-orange-500 border w-fit status">envoyer</p>
+                            <p class="p-1 text-[13px] rounded-md border-gray-500 border w-fit activate_model" id="info-<?php echo $created->id; ?>">more</p>
+                        </div>
                     </div>
                 </div>
             <?php
@@ -57,7 +79,10 @@ require_once "inc/dash-header.php";
                             <i class="fa-regular fa-location-dot"></i>
                             <?php echo $delivred->address; ?>
                         </p>
-                        <p class="p-1 text-[13px] rounded-md border-blue-500 border w-fit status">créer</p>
+                        <div class="flex gap-3">
+                            <p class="p-1 text-[13px] rounded-md border-green-500 border w-fit status">reçu</p>
+                            <p class="p-1 text-[13px] rounded-md border-gray-500 border w-fit activate_model" id="info-<?php echo $created->id; ?>">more</p>
+                        </div>
                     </div>
                 </div>
             <?php

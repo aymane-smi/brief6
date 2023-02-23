@@ -24,12 +24,14 @@ class Order extends Controller
 
     public function payment()
     {
-        $this->OrderModel->createOrder();
-        $rows = $this->Product->getProductFromCart(1);
-        foreach ($rows as $row) {
-            $this->OrderModel->createOrderItems($row->costumer_id, $row->product_id, $row->qte);
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $id = $this->OrderModel->createOrder();
+            $rows = $this->Product->getProductFromCart($_SESSION['user_id']);
+            foreach ($rows as $row) {
+                $this->OrderModel->createOrderItems($id, $row->id, $row->qte);
+            }
+            $this->Product->emptyCart($_SESSION['user_id']);
         }
-        $this->Product->emptyCart();
     }
 
     public function changeStatus()
@@ -39,6 +41,13 @@ class Order extends Controller
             $this->OrderModel->changeOrderStatus($_POST["id"], $_POST["status"]);
         } else {
             echo "status change";
+        }
+    }
+
+    public function commandInfo()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            echo json_encode($this->OrderModel->getUserAndInfo($_POST["id"]));
         }
     }
 }

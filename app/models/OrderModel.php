@@ -15,6 +15,7 @@ class OrderModel
         $this->db->bind(":creationDate", date("y-m-d"));
         $this->db->bind(":status", "created");
         $this->db->execute();
+        return $this->db->lastId();
     }
 
     public function createOrderItems($command_id, $product_id, $qte)
@@ -79,5 +80,15 @@ class OrderModel
     {
         $this->db->query("SELECT count(*) as nbr FROM command");
         return $this->db->single();
+    }
+
+    public function getUserAndInfo($id)
+    {
+        $this->db->query("SELECT costumer.*, product.*, commandItems.qte  FROM command JOIN costumer ON command.costumer_id = costumer.id 
+        JOIN commandItems ON  commandItems.command_id = command.id 
+        JOIN product ON product.id = commandItems.product_id 
+        WHERE command.id = :id");
+        $this->db->bind(":id", $id);
+        return $this->db->resultSet();
     }
 }
