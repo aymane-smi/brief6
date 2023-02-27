@@ -26,6 +26,7 @@ class Dashboard extends Controller
             "order" => $this->Order->nbrOrder()->nbr,
             "shipped" => $this->Order->nbrShipped()->nbr,
             "delivred" => $this->Order->nbrDelivred()->nbr,
+            "client" => $this->User->getAllCostumer(),
             "user" => $this->User->getAdminById($_SESSION["user_id"]),
         ];
         $this->view("Dashboard", $data);

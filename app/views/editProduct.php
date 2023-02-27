@@ -1,6 +1,6 @@
 <?php
 require_once "inc/dash-header.php";
-
+var_dump($data["product"]);
 ?>
 <div class="p-4 rounded-md bg-white">
     <p class="text-[24px] font-medium">
@@ -22,7 +22,7 @@ require_once "inc/dash-header.php";
             <input type="file" name="image" hidden class="img-input" id="image" />
             <div class="p-3 border-gray-200 border-[1.5px] rounded-md mt-3 flex justify-between items-center display-container hidden">
                 <div class="flex justify-center items-center gap-5">
-                    <img src="http://localhost:9000/public/src/assets/wwdc2019DSC_4114.jpg" alt="default" class="img-display rounded-sm w-[40px] h-[40px]" />
+                    <img src="http://localhost:9000/public/src/assets/product/<?php echo $data["product"]->image?>" alt="default" class="img-display rounded-sm w-[40px] h-[40px]" />
                     <div class="flex flex-col">
                         <p class="img-name">title</p>
                         <p class="img-size">size</p>

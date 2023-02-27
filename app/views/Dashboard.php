@@ -123,6 +123,45 @@ require_once "inc/dash-header.php";
         </tbody>
     </table>
 </div>
+<div class="mt-4 bg-white w-full rounded-md p-4">
+    <div class="flex justify-between items-center w-full">
+        <p class="text-[22px] font-medium">Produit</p>
+        <a class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px]" href="/Dashboard/addProduct">
+            <i class="fa-light fa-circle-plus"></i>
+            <span>ajouter un produit</span>
+        </a>
+    </div>
+    <table class="w-full mt-3">
+        <thead class="bg-[#0099fb] text-white">
+            <tr>
+                <th class="p-3 font-normal" align="left">Id</th>
+                <th class="p-3 font-normal" align="left">Email</th>
+                <th class="p-3 font-normal" align="left">Nom d'utilisateur</th>
+                <th class="p-3 font-normal" align="left">Nom complet</th>
+                <th class="p-3 font-normal" align="left">Téléphone</th>
+                <th class="p-3 font-normal" align="left">adresse</th>
+                <th class="p-3 font-normal" align="left">Ville</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($data["client"] as $client) {
+            ?>
+                <tr class="border-[1.5px] border-gray-200">
+                    <td class="p-3 font-normal rounded-l-md"><?php echo $client->id; ?></td>
+                    <td class="p-3 font-normal"><?php echo $client->email; ?></td>
+                    <td class="p-3 font-normal"><?php echo $client->username; ?></td>
+                    <td class="p-3 font-normal"><?php echo $client->full_name; ?></td>
+                    <td class="p-3 font-normal"><?php echo $client->phone; ?></td>
+                    <td class="p-3 font-normal"><?php echo $client->address; ?></td>
+                    <td class="p-3 font-normal"><?php echo $client->city; ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 <div class="flex gap-5 mt-5 max-[800px]:flex-col max-[800px]:justify-center max-[800px]:items-center">
     <div id="chart" class="w-full"></div>
     <div class="w-1/2 p-5 bg-white rounded-md h-fit flex flex-col gap-7 justify-center items-center max-[900px]:w-full">

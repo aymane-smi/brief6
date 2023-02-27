@@ -38,9 +38,9 @@ class Category
         $this->db->bind(":description", $description);
         $this->db->bind(":id", $id);
         $this->db->execute();
-        $this->db->debug();
-        if ($image === "") {
-            $this->db->query("UPDATE category image = :image WHERE id = :id");
+        //$this->db->debug();
+        if ($image !== "") {
+            $this->db->query("UPDATE category SET image = :image WHERE id = :id");
             $this->db->bind(":image", $image);
             $this->db->bind(":id", $id);
             $this->db->execute();

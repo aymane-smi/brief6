@@ -15,6 +15,9 @@ class Order extends Controller
     }
     public function index()
     {
+        session_start();
+        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+            header("Location: /Auth/Login");
         $data = [
             "products" => $this->Product->getProductFromCart($_SESSION["user_id"]),
             "client_info" => $this->Costumer->getClientById($_SESSION["user_id"]),
@@ -24,6 +27,9 @@ class Order extends Controller
 
     public function payment()
     {
+        session_start();
+        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
+            header("Location: /Auth/Login");
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $id = $this->OrderModel->createOrder();
             $rows = $this->Product->getProductFromCart($_SESSION['user_id']);

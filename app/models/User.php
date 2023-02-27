@@ -122,4 +122,9 @@ class User
         $this->db->query("SELECT count(*) as nbr FROM costumer");
         return $this->db->single();
     }
+
+    public function getAllCostumer(){
+        $this->db->query("SELECT * from costumer");
+        return $this->db->resultSet();
+    }
 }
