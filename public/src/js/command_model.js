@@ -8,7 +8,7 @@ close.addEventListener("click", ()=>{
     model.classList.remove("flex");
     model.classList.add("hidden");
     client.innerHTML = "";
-    model.childNodes[0].innerHTML = "";
+    products.innerHTML = "";
 });
 commands.forEach((command)=>{
     command.addEventListener("click", (e)=>{
@@ -21,7 +21,6 @@ commands.forEach((command)=>{
             method: "POST",
             body: formdata,
         }).then((res)=>res.json()).then((data)=>{
-            console.log(data);
             client.innerHTML = `
                 <p class="font-bold">full name <span class="font-medium">${data[0].full_name}</span></p>
                 <p class="font-bold">email <span class="font-medium">${data[0].email}</span></p>
@@ -38,7 +37,6 @@ commands.forEach((command)=>{
                 `;
                 products.append(div);
             }
-            console.log(model.childNodes);
         });
     });
 });

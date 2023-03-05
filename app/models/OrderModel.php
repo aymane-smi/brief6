@@ -8,10 +8,11 @@ class OrderModel
         $this->db = new DB();
     }
 
-    public function createOrder()
+    public function createOrder($id)
     {
+        echo $id;
         $this->db->query("INSERT INTO command(costumer_id, creationDate, status) VALUES(:costumer_id, :creationDate, :status)");
-        $this->db->bind(":costumer_id", 1);
+        $this->db->bind(":costumer_id", $id);
         $this->db->bind(":creationDate", date("y-m-d"));
         $this->db->bind(":status", "created");
         $this->db->execute();
@@ -84,7 +85,7 @@ class OrderModel
 
     public function getUserAndInfo($id)
     {
-        $this->db->query("SELECT costumer.*, product.*, commandItems.qte  FROM command JOIN costumer ON command.costumer_id = costumer.id 
+        $this->db->query("SELECT costumer.*, product.*, commandItems.qte, comandItems.price as buyPrice  FROM command JOIN costumer ON command.costumer_id = costumer.id 
         JOIN commandItems ON  commandItems.command_id = command.id 
         JOIN product ON product.id = commandItems.product_id 
         WHERE command.id = :id");

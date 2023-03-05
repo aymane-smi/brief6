@@ -13,7 +13,7 @@ class Cart extends Controller
 
     public function index()
     {
-        $this->view("Cart", $this->Product->getProductFromCart(1));
+        $this->view("Cart", $this->Product->getProductFromCart($_SESSION["user_id"]));
     }
 
     public function Delete($id)
@@ -26,6 +26,9 @@ class Cart extends Controller
 
     public function plus()
     {
-        $this->Product->setProductInCart($_POST["id"], $_POST["value"]);
+        if(!$this->Product->existInCart($_POST["id"], $_SESSION["user_id"]))
+            $this->Product->setProductInCart($_POST["id"], $_POST["value"]);
+        else
+            $this->Product->changeProductQteInCart($_POST["id"], $_POST["value"]);
     }
 }

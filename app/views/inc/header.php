@@ -17,7 +17,7 @@ session_start();
             </p>
             <div class="flex justify-center items-center gap-[30px] text-[#5C5C5C]">
                 <?php
-                if (isset($_SESSION["ROLE"]) && $_SESSION["role"] === "client") {
+                if (isset($_SESSION["user_id"]) && $_SESSION["ROLE"] === "client") {
                 ?>
                     <a href="/settings">
                         <i class="fa-light fa-user text-[20px]"></i>
@@ -46,7 +46,7 @@ session_start();
                     </li>
                     <li class="mt-5">
                         <?php
-                        if (isset($_SESSION["ROLE"]) && $_SESSION["role"] === "client") {
+                        if (isset($_SESSION["user_id"]) && $_SESSION["ROLE"] === "client") {
                         ?>
                             <a href="/Auth/logout">
                                 <i class="fa-solid fa-right-from-bracket"></i>

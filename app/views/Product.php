@@ -29,6 +29,7 @@ if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
         <?php if ($key) echo "true"; ?>
         <form action="http://localhost:9000/Product/<?php echo $data->id; ?>" method="POST">
             <input type="hidden" name="qte" value="0" class="qte-input" />
+            <input type="hidden" name="price" value="<?php echo $data->final_price;?>"/>
             <button class="text-white bg-black p-5 mt-10 rounded-tl-[15px] rounded-br-[15px] font-semibold" <?php if ($key) echo "disabled"; ?>>ajouter au panier</button>
         </form>
     </div>

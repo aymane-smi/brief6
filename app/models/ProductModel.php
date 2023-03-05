@@ -74,18 +74,19 @@ class ProductModel
         return $this->db->resultSet();
     }
 
-    public function addProductToCart($product_id, $costumer_id, $qte)
+    public function addProductToCart($product_id, $costumer_id, $qte, $price)
     {
-        $this->db->query("INSERT INTO cart(costumer_id, product_id, qte) VALUES(:costumer_id, :product_id, :qte)");
+        $this->db->query("INSERT INTO cart(costumer_id, product_id, qte, price) VALUES(:costumer_id, :product_id, :qte, :price)");
         $this->db->bind(":costumer_id", $costumer_id);
         $this->db->bind(":product_id", $product_id);
         $this->db->bind(":qte", $qte);
+        $this->db->bind(":price", $price);
         $this->db->execute();
     }
 
     public function getProductFromCart($costumer_id)
     {
-        $this->db->query("SELECT qte, product.* FROM cart JOIN product ON product.id = cart.product_id WHERE costumer_id = :id ");
+        $this->db->query("SELECT cart.qte, cart.price as Cartprice, product.* FROM cart JOIN product ON product.id = cart.product_id WHERE costumer_id = :id ");
         $this->db->bind(":id", $costumer_id);
         return $this->db->resultSet();
     }
@@ -99,9 +100,26 @@ class ProductModel
 
     public function setProductInCart($id, $value)
     {
-        $this->db->query("UPDATE cart SET qte = :value WHERE product_id = :id");
+        $this->db->query("UPDATE cart SET qte = :value WHERE product_id = :id AND costumer_id = :costumer_id");
         $this->db->bind(":id", $id);
         $this->db->bind(":value", $value);
+        $this->db->bind(":costumer_id", $_SESSION["user_id"]);
+        $this->db->execute();
+    }
+
+    public function getQteOfProduct($id){
+        $this->db->query("SELECT qte FROM cart WHERE product_id = :product_id AND costumer_id = :costumer_id");
+        $this->db->bind(":product_id", $id);
+        $this->db->bind(":costumer_id", $_SESSION["user_id"]);
+        $result = $this->db->single();
+        return $result->qte;
+    }
+
+    public function changeProductQteInCart($id, $value){
+        $this->db->query("UPDATE cart SET qte = :qte WHERE costumer_id = :costumer_id AND product_id = :product_id");
+        $this->db->bind(":qte", $value);
+        $this->db->bind(":product_id", $id);
+        $this->db->bind(":costumer_id", $_SESSION["user_id"]);
         $this->db->execute();
     }
 
@@ -132,5 +150,15 @@ class ProductModel
         $this->db->query("DELETE FROM product WHERE id = :id");
         $this->db->bind(":id", $id);
         $this->db->execute();
+    }
+
+    public function existInCart($id, $costumer_id){
+        $this->db->query("SELECT COUNT(product_id) as total FROM cart WHERE product_id = :id AND costumer_id = :costumer_id");
+        $this->db->bind(":id", $id, PDO::PARAM_INT);
+        $this->db->bind(":costumer_id", $costumer_id, PDO::PARAM_INT);
+        if($this->db->single()->total)
+            return true;
+        else
+            return false;
     }
 }

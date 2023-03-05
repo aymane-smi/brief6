@@ -1,9 +1,12 @@
 <?php
 require_once "inc/dash-header.php";
 ?>
-<div class="w-full p-8 font-medium text-[25px]">
+<div class="w-full p-8 font-medium text-[25px] flex justify-between">
+    <div>
     <p>Dashboard</p>
     <p class="text-gray-400 text-[16px] mt-2">Ravi de te revoir! <?php echo $data["user"]->username; ?></p>
+    </div>
+    <a href="/Auth/logout" class="text-[15px]">logout</a>
 </div>
 <div class="flex justify-center items-center w-full gap-4">
     <div class="bg-[#fe6976] w-fit p-5 rounded-md font-semibold text-white flex justify-between gap-5 items-center">
@@ -37,7 +40,7 @@ require_once "inc/dash-header.php";
 </div>
 <div class="mt-4 bg-white w-full rounded-md p-4">
     <div class="flex justify-between items-center w-full">
-        <p class="text-[22px] font-medium">Produit</p>
+        <p class="text-[22px] font-medium">Produits</p>
         <a class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px]" href="/Dashboard/addProduct">
             <i class="fa-light fa-circle-plus"></i>
             <span>ajouter un produit</span>
@@ -86,7 +89,7 @@ require_once "inc/dash-header.php";
 </div>
 <div class="mt-4 bg-white w-full rounded-md p-4">
     <div class="flex justify-between items-center w-full">
-        <p class="text-[22px] font-medium">Catégorie</p>
+        <p class="text-[22px] font-medium">Catégories</p>
         <a class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px]" href="/Dashboard/addCategory">
             <i class="fa-light fa-circle-plus"></i>
             <span>ajouter une catégorie</span>
@@ -125,11 +128,7 @@ require_once "inc/dash-header.php";
 </div>
 <div class="mt-4 bg-white w-full rounded-md p-4">
     <div class="flex justify-between items-center w-full">
-        <p class="text-[22px] font-medium">Produit</p>
-        <a class="bg-[#19a2fb] p-2 text-white rounded-md font-thin text-[13px]" href="/Dashboard/addProduct">
-            <i class="fa-light fa-circle-plus"></i>
-            <span>ajouter un produit</span>
-        </a>
+        <p class="text-[22px] font-medium">Clients</p>
     </div>
     <table class="w-full mt-3">
         <thead class="bg-[#0099fb] text-white">

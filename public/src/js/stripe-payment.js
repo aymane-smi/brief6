@@ -25,8 +25,9 @@ document.querySelector(".form-payment").addEventListener("submit", (e)=>{
         }else{
             (async()=>{
                 await fetch("http://localhost:9000/Order/payment", {
-                    metod: "POST",
+                    metod: "GET",
                 });
+                console.log("call the payment endpoint");
                 window.location.href = "/";
             })();
         }

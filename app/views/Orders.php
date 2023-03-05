@@ -1,7 +1,7 @@
 <?php
 require_once "inc/dash-header.php";
 ?>
-<div class="w-screen h-screen absolute bg-black/20 justify-center items-center hidden" id="model">
+<div class="w-screen h-screen absolute bg-black/20 justify-center items-center hidden z-50" id="model">
     <div class="bg-white p-10 rounded-[10px]">
         <div class="client-info"></div>
         <div class="grid grid-cols-3 gap-3 mt-5">
@@ -22,7 +22,7 @@ require_once "inc/dash-header.php";
             foreach ($data["created"] as $created) {
             ?>
                 <div class="w-full rounded-xl overflow-hidden flex justify-start" id="cmd_<?php echo $created->id; ?>" ondragstart="dragstart(event)" draggable="true">
-                    <div class="text-[30px] font-semibold p-5 bg-blue-300" style="writing-mode:vertical-rl; transform: rotate(180deg)">cmd°<?php echo $created->id; ?></div>
+                    <div class="text-[30px] font-semibold p-5 bg-blue-300" style="writing-mode:vertical-rl; transform: rotate(180deg);">cmd°<?php echo $created->id; ?></div>
                     <div class="border w-full p-3 flex flex-col justify-between">
                         <p class="font-semibold full-name"><?php echo $created->full_name; ?></p>
                         <p class="mt-3">

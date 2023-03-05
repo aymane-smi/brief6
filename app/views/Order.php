@@ -1,7 +1,7 @@
 <?php
 require_once "inc/header.php";
 ?>
-<form class="bg-white mt-4 p-4 rounded-sm flex justify-center items-start gap-5 max-[1000px]:flex-col form-payment" method="POST" action="http://localhost:9000/Order/payment">
+<form class="bg-white mt-4 p-4 rounded-sm flex justify-center items-start gap-5 max-[1000px]:flex-col form-payment" >
     <div class="max-[1000px]:w-[90%] w-1/2 flex flex-col gap-5">
         <p class="my-3 text-[25px] font-bold">Information de votre carte bancaire</p>
         <div class="my-3 flex flex-col" id="bank_info"></div>
