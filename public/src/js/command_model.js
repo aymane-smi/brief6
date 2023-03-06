@@ -13,6 +13,7 @@ close.addEventListener("click", ()=>{
 commands.forEach((command)=>{
     command.addEventListener("click", (e)=>{
         id = e.target.id.substring(5);
+        console.log(e.target.id);
         model.classList.add("flex");
         model.classList.remove("hidden");
         const formdata = new FormData();
@@ -33,7 +34,7 @@ commands.forEach((command)=>{
                 div.innerHTML = `
                 <p class="rounded-[10px] p-3 flex justify-center font-bold">${row.label}</p>
                 <p class="rounded-[10px] p-3 flex justify-center font-bold">${row.qte}</p>
-                <p class="rounded-[10px] p-3 flex justify-center font-bold">${row.qte * row.final_price} $</p>
+                <p class="rounded-[10px] p-3 flex justify-center font-bold">${row.qte * row.buyPrice} $</p>
                 `;
                 products.append(div);
             }

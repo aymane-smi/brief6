@@ -28,13 +28,14 @@ class Order extends Controller
     public function payment()
     {
         session_start();
-        if (empty($_SESSION) && $_SESSION["ROLE"] === "admin")
+        if (empty($_SESSION) || $_SESSION["ROLE"] === "admin")
             header("Location: /Auth/Login");
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $id = $this->OrderModel->createOrder($_SESSION["user_id"]);
             $rows = $this->Product->getProductFromCart($_SESSION['user_id']);
             foreach ($rows as $row) {
-                $this->OrderModel->createOrderItems($id, $row->id, $row->qte);
+                echo $row->buyPrice;
+                $this->OrderModel->createOrderItems($id, $row->id, $row->qte, $row->Cartprice);
             }
             $this->Product->emptyCart($_SESSION['user_id']);
         }

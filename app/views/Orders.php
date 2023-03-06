@@ -54,7 +54,7 @@ require_once "inc/dash-header.php";
                         </p>
                         <div class="flex gap-3">
                             <p class="p-1 text-[13px] rounded-md border-orange-500 border w-fit status">envoyer</p>
-                            <p class="p-1 text-[13px] rounded-md border-gray-500 border w-fit activate_model" id="info-<?php echo $created->id; ?>">more</p>
+                            <p class="p-1 text-[13px] rounded-md border-gray-500 border w-fit activate_model" id="info-<?php echo $shipped->id; ?>">more</p>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ require_once "inc/dash-header.php";
                         </p>
                         <div class="flex gap-3">
                             <p class="p-1 text-[13px] rounded-md border-green-500 border w-fit status">reçu</p>
-                            <p class="p-1 text-[13px] rounded-md border-gray-500 border w-fit activate_model" id="info-<?php echo $created->id; ?>">more</p>
+                            <p class="p-1 text-[13px] rounded-md border-gray-500 border w-fit activate_model" id="info-<?php echo $delivred->id; ?>">more</p>
                         </div>
                     </div>
                 </div>

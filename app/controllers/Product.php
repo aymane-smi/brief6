@@ -12,7 +12,12 @@ class Product extends Controller
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $this->view("Product", $this->Product->getProductById($id));
         } else {
-            $this->Product->addProductToCart($id, $_SESSION["user_id"], $_POST["qte"], $_POST["price"]);
+            if(!$this->Product->existInCart($id, $_SESSION["user_id"])){
+                $this->Product->setProductInCart($id, $_SESSION["user_id"], $_POST["qte"], $_POST["price"]);
+            }else{
+                $qte = $this->Product->getQteOfProduct($id);
+                $this->Product->changeProductQteInCart($id, $qte + $_POST["qte"]);
+            }
             header("Location: /Cart");
         }
     }

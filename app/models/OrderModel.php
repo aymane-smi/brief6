@@ -19,12 +19,13 @@ class OrderModel
         return $this->db->lastId();
     }
 
-    public function createOrderItems($command_id, $product_id, $qte)
+    public function createOrderItems($command_id, $product_id, $qte, $price)
     {
-        $this->db->query("INSERT INTO commandItems(command_id, product_id, qte) VALUES(:command_id, :product_id, :qte)");
+        $this->db->query("INSERT INTO commandItems(command_id, product_id, qte, price) VALUES(:command_id, :product_id, :qte, :price)");
         $this->db->bind(":command_id", $command_id);
         $this->db->bind(":product_id", $product_id);
         $this->db->bind(":qte", $qte);
+        $this->db->bind(":price", $price);
         $this->db->execute();
     }
 
@@ -85,7 +86,7 @@ class OrderModel
 
     public function getUserAndInfo($id)
     {
-        $this->db->query("SELECT costumer.*, product.*, commandItems.qte, comandItems.price as buyPrice  FROM command JOIN costumer ON command.costumer_id = costumer.id 
+        $this->db->query("SELECT costumer.*, product.*, commandItems.qte, commandItems.price as buyPrice  FROM command JOIN costumer ON command.costumer_id = costumer.id 
         JOIN commandItems ON  commandItems.command_id = command.id 
         JOIN product ON product.id = commandItems.product_id 
         WHERE command.id = :id");
